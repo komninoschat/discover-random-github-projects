@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="194" height="87" viewBox="0 0 194 87">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="187" height="79" fill="#55DFC9"/>
+    <text fill="#FFF" font-family="Oswald-Medium, Oswald" font-size="40">
+      <tspan x="71" y="57">GO</tspan>
+    </text>
+    <polygon fill="#39FFDE" points="187 79 194 87 5.543 87 0 79"/>
+    <polygon fill="#1DC6AA" points="194 87 187 79 187 0 194 5.205"/>
+  </g>
+</svg>
