@@ -87,9 +87,7 @@ function rngArray<T>(arr: T[]): T {
   }
 })
 export default class App extends Vue {
-  octokit = new Octokit({
-    auth: '6d52db5961eeb81cf93816b87948355bcdf9c442'
-  });
+  octokit = new Octokit();
   topics: string = '';
   loading: boolean = false;
 
