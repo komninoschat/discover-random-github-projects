@@ -92,8 +92,15 @@ export default class App extends Vue {
   topics: string = '';
   loading: boolean = false;
 
+  mounted() {
+    if (localStorage.topics) {
+      this.topics = localStorage.topics;
+    }
+  }
+
   async submit() {
     this.loading = true;
+    localStorage.topics = this.topics;
     const topics = this.topics.split(',').map(topic => topic.trim());
     const repos = (await this.octokit.search.repos({
       q: (topics.join('+') || rngArray(defaultTopics)) + '&stars:<=400',
