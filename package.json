@@ -10,6 +10,7 @@
   "dependencies": {
     "@octokit/rest": "^16.28.7",
     "core-js": "^2.6.5",
+    "mobile-device-detect": "^0.2.3",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "reset-css": "^4.0.1",

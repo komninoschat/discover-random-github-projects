@@ -65,6 +65,7 @@ import Overlay from '@/components/Overlay.vue';
 import Spinner from '@/components/Spinner.vue';
 import Title from '@/components/Title.vue';
 import Topics from '@/components/Topics.vue';
+import { isMobile } from 'mobile-device-detect';
 
 function rng(min: number, max: number) {
   min = Math.ceil(min);
@@ -102,7 +103,12 @@ export default class App extends Vue {
       page: rng(0, 1)
     })).data.items;
 
-    window.open(rngArray(repos.map((repo: any) => repo.html_url)));
+    const url = rngArray<string>(repos.map((repo: any) => repo.html_url));
+    if (isMobile) {
+      window.location.href = url;
+    } else {
+      window.open(url);
+    }
     this.loading = false;
   }
 }
