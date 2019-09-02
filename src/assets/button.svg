@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="194" height="87" viewBox="0 0 194 87">
   <g fill="none" fill-rule="evenodd">
     <rect width="187" height="79" fill="#55DFC9"/>
-    <text fill="#FFF" font-family="Oswald-Medium, Oswald" font-size="40">
+    <text fill="#FFF" font-family="Oswald-Medium, Oswald" font-size="40" style="font-family: 'Oswald', sans-serif;">
       <tspan x="71" y="57">GO</tspan>
     </text>
     <polygon fill="#39FFDE" points="187 79 194 87 5.543 87 0 79"/>
