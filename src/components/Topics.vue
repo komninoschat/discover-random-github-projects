@@ -1,5 +1,5 @@
 <template lang="pug">
-  input.topics(placeholder="Add topics (e.g. javascript, go)" :value="value" @input="")
+  input.topics(placeholder="Add topics (e.g. javascript, go)" :value="value" @input="e => this.$emit('input', e.target.value)")
 </template>
 
 <style lang="stylus" scoped>
@@ -23,11 +23,6 @@ import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 
 @Component
 export default class Topics extends Vue {
-  @Prop() value!: string;
-
-  @Emit('input')
-  emitInput() {
-    return this.value;
-  }
+  @Prop({ default: '' }) value!: string;
 }
 </script>
