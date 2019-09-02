@@ -1,4 +1,6 @@
 module.exports = {
   publicPath:
-    process.env.NODE_ENV === 'production' ? '/random-github-project/' : '/'
+    process.env.NODE_ENV === 'production'
+      ? '/discover-random-github-projects/'
+      : '/'
 };
