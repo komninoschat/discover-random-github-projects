@@ -1,5 +1,5 @@
 <template lang="pug">
-a(href="https://github.com/komninoschat/random-github-project")
+a(href="https://github.com/komninoschat/discover-github-projects")
   img.github-logo-img(src="@/assets/github.png")
 </template>
 

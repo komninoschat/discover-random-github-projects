@@ -1,29 +1,25 @@
-# random-github-project
+# Discover Github projects
+
+Tool to discover interesting Github projects based on some topics. Built on top of [Vue 3](https://v3.vuejs.org/), [Typescript](https://www.typescriptlang.org/), [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html).
+
+[Website link](https://komninoschat.github.io/discover-github-projects/)
 
 ## Project setup
+
 ```
-npm install
+yarn
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
-npm run serve
+yarn run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
-npm run build
+yarn run build
 ```
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+`master` branch auto-deployed by [Travis CI](https://www.travis-ci.com/).
