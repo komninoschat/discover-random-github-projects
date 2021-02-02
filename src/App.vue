@@ -50,10 +50,6 @@
     right 3.5em
     bottom 2.5em
     height 90px
-    @media (max-width 450px)
-      position static
-      display block
-      margin 100px auto 0 auto
 </style>
 
 <script lang="ts">
