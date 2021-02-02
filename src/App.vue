@@ -55,7 +55,7 @@
 <script lang="ts">
 import 'reflect-metadata';
 import { Component, Vue } from 'vue-property-decorator';
-import Octokit from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 import defaultTopics from '@/defaultTopics';
 import Button from '@/components/Button.vue';
 import GithubLogo from '@/components/GithubLogo.vue';
@@ -109,7 +109,7 @@ export default class App extends Vue {
       });
     const repos = (
       await this.octokit.search.repos({
-        q: (topics.join('+') || rngArray(defaultTopics)) + '&stars:<=400',
+        q: (topics.join('+') || rngArray(defaultTopics)) + ' stars:>=20',
         sort: 'updated',
         order: 'desc',
         per_page: 100,
