@@ -42,5 +42,5 @@ export default [
   'solidity',
   'server',
   'vue',
-  'arduino'
+  'arduino',
 ];

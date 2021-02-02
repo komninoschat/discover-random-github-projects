@@ -1,10 +1,10 @@
 <template lang="pug">
-  #app
-    Overlay(:loading="loading")
-    Title.title Discover Random Github Projects
-    Topics.topics(v-model="topics" @keyup.native.enter="submit")
-    Button.button(@click.native="submit")
-    GithubLogo.github-logo
+#app
+  Overlay(:loading="loading")
+  Title.title Discover Random Github Projects
+  Topics.topics(v-model="topics" @keyup.enter="submit")
+  Button.button(@click="submit")
+  GithubLogo.github-logo
 </template>
 
 <style lang="stylus">
@@ -53,17 +53,19 @@
 </style>
 
 <script lang="ts">
-import 'reflect-metadata';
-import { Component, Vue } from 'vue-property-decorator';
+import { defineComponent, onMounted, ref } from 'vue';
+
 import { Octokit } from '@octokit/rest';
+import { isMobile } from 'mobile-device-detect';
+
 import defaultTopics from '@/defaultTopics';
+
 import Button from '@/components/Button.vue';
 import GithubLogo from '@/components/GithubLogo.vue';
 import Overlay from '@/components/Overlay.vue';
 import Spinner from '@/components/Spinner.vue';
 import Title from '@/components/Title.vue';
 import Topics from '@/components/Topics.vue';
-import { isMobile } from 'mobile-device-detect';
 
 function rng(min: number, max: number) {
   min = Math.ceil(min);
@@ -75,55 +77,65 @@ function rngArray<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-@Component({
+export default defineComponent({
+  name: 'App',
   components: {
     Title,
     Button,
     Topics,
     GithubLogo,
     Overlay,
-    Spinner
-  }
-})
-export default class App extends Vue {
-  octokit = new Octokit();
-  topics: string = '';
-  loading: boolean = false;
+    Spinner,
+  },
+  setup() {
+    const topics = ref('');
+    const loading = ref(false);
+    const octokit = ref(new Octokit());
 
-  mounted() {
-    if (localStorage.topics) {
-      this.topics = localStorage.topics;
-    }
-  }
+    const loadLocalStorageTopics = onMounted(function() {
+      if (localStorage.topics) {
+        topics.value = localStorage.topics;
+      }
+    });
 
-  async submit() {
-    this.loading = true;
-    localStorage.topics = this.topics;
-    const topics = this.topics
-      .split(',')
-      .map(topic => topic.trim())
-      .map(topic => {
-        if (topic === 'c++') return 'cpp';
-        else if (topic === 'c#') return 'csharp';
-        else return topic;
-      });
-    const repos = (
-      await this.octokit.search.repos({
-        q: (topics.join('+') || rngArray(defaultTopics)) + ' stars:>=20',
-        sort: 'updated',
-        order: 'desc',
+    async function submit() {
+      loading.value = true;
+      localStorage.topics = topics;
+      const topicsArray = topics.value
+        .split(',')
+        .map(topic => topic.trim())
+        .map(topic => {
+          if (topic === 'c++') return 'cpp';
+          else if (topic === 'c#') return 'csharp';
+          else return topic;
+        });
+      const repos = await octokit.value.search
+        .repos({
+          q: (topicsArray.join('+') || rngArray(defaultTopics)) + ' stars:>=20',
+          sort: 'updated',
+          order: 'desc',
+          // eslint-disable-next-line
         per_page: 100,
-        page: rng(0, 1)
-      })
-    ).data.items;
+          page: rng(0, 1),
+        })
+        .then((res: any) => res.data.items);
 
-    const url = rngArray<string>(repos.map((repo: any) => repo.html_url));
-    if (isMobile) {
-      window.location.href = url;
-    } else {
-      window.open(url);
+      const url = rngArray<string>(repos.map((repo: any) => repo.html_url));
+      if (isMobile) {
+        window.location.href = url;
+      } else {
+        window.open(url);
+      }
+      loading.value = false;
     }
-    this.loading = false;
-  }
-}
+
+    return {
+      loadLocalStorageTopics,
+      submit,
+      topics,
+      loading,
+      octokit,
+    };
+  },
+});
 </script>

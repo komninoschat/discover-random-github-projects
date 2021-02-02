@@ -1,5 +1,5 @@
 <template lang="pug">
-  input.topics(placeholder="Add topics (e.g. javascript, go)" :value="value" @input="e => this.$emit('input', e.target.value)")
+input.topics(placeholder="Add topics (e.g. javascript, go)" :value="value" @input="e => this.$emit('input', e.target.value)")
 </template>
 
 <style lang="stylus" scoped>
@@ -18,11 +18,16 @@
 </style>
 
 <script lang="ts">
-import 'reflect-metadata';
-import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
+import { defineComponent } from 'vue';
 
-@Component
-export default class Topics extends Vue {
-  @Prop({ default: '' }) value!: string;
-}
+export default defineComponent({
+  name: 'Spinner',
+  props: {
+    value: {
+      type: String,
+      default: '',
+    },
+  },
+  emits: ['keyup.enter'],
+});
 </script>

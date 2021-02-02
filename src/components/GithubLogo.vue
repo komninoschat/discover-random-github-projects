@@ -1,6 +1,6 @@
 <template lang="pug">
-  a(href="https://github.com/komninoschat/random-github-project")
-    img.github-logo-img(src="@/assets/github.png")
+a(href="https://github.com/komninoschat/random-github-project")
+  img.github-logo-img(src="@/assets/github.png")
 </template>
 
 <style lang="stylus" scoped>
@@ -13,9 +13,9 @@
 </style>
 
 <script lang="ts">
-import 'reflect-metadata';
-import { Component, Vue } from 'vue-property-decorator';
+import { defineComponent } from 'vue';
 
-@Component
-export default class GithubLogo extends Vue {}
+export default defineComponent({
+  name: 'GithubLogo',
+});
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  img.spinner(src="@/assets/spinner.png")
+img.spinner(src="@/assets/spinner.png")
 </template>
 
 <style lang="stylus" scoped>
@@ -14,9 +14,9 @@
 </style>
 
 <script lang="ts">
-import 'reflect-metadata';
-import { Component, Vue } from 'vue-property-decorator';
+import { defineComponent } from 'vue';
 
-@Component
-export default class Spinner extends Vue {}
+export default defineComponent({
+  name: 'Spinner',
+});
 </script>

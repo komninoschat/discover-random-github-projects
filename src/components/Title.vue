@@ -1,6 +1,6 @@
 <template lang="pug">
-  h1.title
-    slot
+h1.title
+  slot
 </template>
 
 <style lang="stylus" scoped>
@@ -13,9 +13,9 @@
 </style>
 
 <script lang="ts">
-import 'reflect-metadata';
-import { Component, Vue } from 'vue-property-decorator';
+import { defineComponent } from 'vue';
 
-@Component
-export default class Title extends Vue {}
+export default defineComponent({
+  name: 'Title',
+});
 </script>

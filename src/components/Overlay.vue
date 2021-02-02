@@ -1,6 +1,6 @@
 <template lang="pug">
-  .overlay(:style="{opacity: loading ? '1' : '0', pointerEvents: loading ? 'all' : 'none'}")
-    Spinner.spinner
+.overlay(:style="{opacity: loading ? '1' : '0', pointerEvents: loading ? 'all' : 'none'}")
+  Spinner.spinner
 </template>
 
 <style lang="stylus" scoped>
@@ -23,16 +23,20 @@
 </style>
 
 <script lang="ts">
-import 'reflect-metadata';
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { defineComponent } from 'vue';
+
 import Spinner from '@/components/Spinner.vue';
 
-@Component({
+export default defineComponent({
+  name: 'Overlay',
   components: {
-    Spinner
-  }
-})
-export default class Overlay extends Vue {
-  @Prop({ default: false }) loading!: boolean;
-}
+    Spinner,
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+});
 </script>
