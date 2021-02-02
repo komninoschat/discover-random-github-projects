@@ -33,6 +33,8 @@
     text-align center
     @media (max-width 900px)
       font-size 3em
+    @media (max-width 550px)
+      font-size 2.5em
   .topics
     max-width 550px
     margin-top 2.5em
@@ -101,14 +103,23 @@ export default class App extends Vue {
   async submit() {
     this.loading = true;
     localStorage.topics = this.topics;
-    const topics = this.topics.split(',').map(topic => topic.trim());
-    const repos = (await this.octokit.search.repos({
-      q: (topics.join('+') || rngArray(defaultTopics)) + '&stars:<=400',
-      sort: 'updated',
-      order: 'desc',
-      per_page: 100,
-      page: rng(0, 1)
-    })).data.items;
+    const topics = this.topics
+      .split(',')
+      .map(topic => topic.trim())
+      .map(topic => {
+        if (topic === 'c++') return 'cpp';
+        else if (topic === 'c#') return 'csharp';
+        else return topic;
+      });
+    const repos = (
+      await this.octokit.search.repos({
+        q: (topics.join('+') || rngArray(defaultTopics)) + '&stars:<=400',
+        sort: 'updated',
+        order: 'desc',
+        per_page: 100,
+        page: rng(0, 1)
+      })
+    ).data.items;
 
     const url = rngArray<string>(repos.map((repo: any) => repo.html_url));
     if (isMobile) {
