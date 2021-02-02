@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="194px" height="87px" viewBox="0 0 194 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Button</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="button">
+            <rect id="Rectangle" fill="#55DFC9" fill-rule="nonzero" x="0" y="0" width="187" height="79"></rect>
+            <text id="GO" fill="#FFFFFF" font-family="Helvetica" font-size="40" font-weight="normal">
+                <tspan x="62" y="55">GO</tspan>
+            </text>
+            <polygon id="Path" fill="#39FFDE" fill-rule="nonzero" points="187 79 194 87 5.543 87 0 79"></polygon>
+            <polygon id="Path" fill="#1DC6AA" fill-rule="nonzero" points="194 87 187 79 187 0 194 5.205"></polygon>
+        </g>
+    </g>
+</svg>
